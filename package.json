@@ -1,5 +1,5 @@
 {
-  "name": "aws-profile",
+  "name": "aws-apis",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
@@ -11,10 +11,11 @@
   "dependencies": {
     "@aws-sdk/client-api-gateway": "^3.47.0",
     "@aws-sdk/client-lambda": "^3.47.0",
+    "@aws-sdk/credential-providers": "^3.47.1",
     "ini": "^2.0.0",
-    "tcommands": "github:mtwomey/tcommands#v1.2.1"
+    "tcommands": "github:mtwomey/tcommands#v1.2.2"
   },
   "bin": {
-    "aws-profile": "src/aws-profile.js"
+    "aws-apis": "src/aws-apis.js"
   }
 }

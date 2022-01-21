@@ -10,17 +10,24 @@ const command = {
         '-h'
     ],
     helpText: 'Shows this help text',
-    handler: handler,
+    handler: handler
 }
 
 tcommands.register(command);
 
-async function handler () {
-    console.log(`Usage: ${pjson.name} [profile name]\n`);
-    console.log(`Commands:\n`);
+async function handler() {
+    console.log(`Usage: ${pjson.name} [command] [options]\n`);
 
+    console.log(`Commands:\n`);
     Object.keys(tcommands.commands).filter(command => {
-        return tcommands.commands[command].showInHelp !== false
+        return tcommands.commands[command].showInHelp !== false && tcommands.commands[command].type !== 'Option';
+    }).forEach(command => {
+        console.log(tcommands.commands[command].syntax.join(', ').padEnd(50) + tcommands.commands[command].helpText);
+    })
+
+    console.log(`\nOptions:\n`);
+    Object.keys(tcommands.commands).filter(command => {
+        return tcommands.commands[command].showInHelp !== false && tcommands.commands[command].type === 'Option';
     }).forEach(command => {
         console.log(tcommands.commands[command].syntax.join(', ').padEnd(50) + tcommands.commands[command].helpText);
     })
